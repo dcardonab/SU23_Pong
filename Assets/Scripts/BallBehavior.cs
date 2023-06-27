@@ -6,6 +6,7 @@ public class BallBehavior : MonoBehaviour
 {
     [SerializeField] float _speed = 5.0f;
 
+    [SerializeField] float _xLimit = 10.0f;
     [SerializeField] float _yLimit;
 
     int _xDir;
@@ -13,9 +14,7 @@ public class BallBehavior : MonoBehaviour
 
     void Start()
     {
-        // Use probability to determine direction
-        _xDir = Random.Range(0.0f, 1.0f) >= 0.5f ? 1 : -1;
-        _yDir = Random.Range(0.0f, 1.0f) >= 0.5f ? 1 : -1;
+        ResetBall();
     }
 
     void Update()
@@ -37,5 +36,23 @@ public class BallBehavior : MonoBehaviour
                 transform.position.z
             );
         }
+
+        if (Mathf.Abs(transform.position.x) >= _xLimit)
+            ResetBall();
+    }
+
+    void ResetBall()
+    {
+        // Use probability to determine direction
+        _xDir = Random.Range(0.0f, 1.0f) >= 0.5f ? 1 : -1;
+        _yDir = Random.Range(0.0f, 1.0f) >= 0.5f ? 1 : -1;
+
+        transform.position = new Vector3(0, 0, 0);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Paddle"))
+            _xDir *= -1;
     }
 }
