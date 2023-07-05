@@ -1,10 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameBehavior : MonoBehaviour
 {
     public static GameBehavior Instance;
+
+    [SerializeField] Player[] _players = new Player[2];
+
+    public GameState State;
+
+    public readonly float InitBallSpeed = 5.0f;
+    public readonly float BallSpeedIncrement = 0.5f;
+
+    readonly int _pointsToVictory = 2;
+
+    [SerializeField] TextMeshProUGUI _messagesGUI;
 
     void Awake()
     {
@@ -30,5 +42,50 @@ public class GameBehavior : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
+    }
+
+    void Start()
+    {
+        ResetGame();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P) && State != GameState.GameOver)
+        {
+            State = State == GameState.Play ? GameState.Pause : GameState.Play;
+            _messagesGUI.enabled = !_messagesGUI.enabled;
+        }
+
+        if (State == GameState.GameOver && Input.GetKeyDown(KeyCode.Space))
+            ResetGame();
+        
+    }
+
+    void ResetGame()
+    {
+        foreach (Player p in _players)
+            p.Score = 0;
+
+        State = GameState.Play;
+
+        _messagesGUI.text = "Pause";
+        _messagesGUI.enabled = false;
+    }
+
+    public void UpdateScore(int player)
+    {
+        _players[player - 1].Score += 1;
+
+        if (_players[player - 1].Score >= _pointsToVictory)
+            GameOver(player);
+    }
+
+    void GameOver(int winner)
+    {
+        State = GameState.GameOver;
+
+        _messagesGUI.text = $"Player {winner} won!\nPress space bar to start.";
+        _messagesGUI.enabled = true;
     }
 }

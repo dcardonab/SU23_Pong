@@ -5,6 +5,9 @@ using TMPro;    // TextMeshProUGUI is implemented
 
 public class Player : MonoBehaviour
 {
+    // Property safeguard private field, using underscore
+    // with public variable that defines specific logic
+    // for getting and setting data
     private int _score;
     public int Score
     {
@@ -19,10 +22,4 @@ public class Player : MonoBehaviour
     }
 
     [SerializeField] TextMeshProUGUI _scoreGUI;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Score = 0;
-    }
 }
