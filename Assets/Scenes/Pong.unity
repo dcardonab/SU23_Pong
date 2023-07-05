@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 473284346}
   - component: {fileID: 473284349}
   - component: {fileID: 473284348}
+  - component: {fileID: 473284350}
   m_Layer: 0
   m_Name: Paddle R
   m_TagString: Paddle
@@ -476,6 +477,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &473284350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473284344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8d474c3b39b472ab4f7e0780540b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreGUI: {fileID: 1250106512}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +587,8 @@ GameObject:
   - component: {fileID: 591815757}
   - component: {fileID: 591815760}
   - component: {fileID: 591815759}
+  - component: {fileID: 591815762}
+  - component: {fileID: 591815761}
   m_Layer: 0
   m_Name: Paddle L
   m_TagString: Paddle
@@ -710,6 +726,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &591815761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591815755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccf70fdea9544d39a81599b32892ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: 2
+--- !u!114 &591815762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591815755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8d474c3b39b472ab4f7e0780540b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreGUI: {fileID: 168384299}
 --- !u!1 &946835478
 GameObject:
   m_ObjectHideFlags: 0
